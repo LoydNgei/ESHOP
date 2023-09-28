@@ -9,9 +9,6 @@
 // If the user is an admin, they are allowed to do Admin stuff.
 
 
-
-
-
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {

@@ -22,25 +22,26 @@ export const sliderItems = [
     },
   ];
 
-
+  
+  
 
 
 export const categories = [
     {
       id: 1,
-      img: "https://i.ibb.co/Bc6QbCH/Stylish-Footwear.jpg",
+      img: "https://i.ibb.co/SVxVQLx/Men.jpg",
       title: "Men Style",
       cat:"MenStyle"
     },
     {
       id: 2,
-      img: "https://i.ibb.co/CHz1grB/Mobile-Accessories.jpg",
+      img: "https://i.ibb.co/wKPFKmX/Gaming-Pad.jpg",
       title: "Mobile Accessories",
       cat:"Mobile"
     },
     {
       id: 3,
-      img: "https://i.ibb.co/52JZMd3/Kitchenessantials.jpg",
+      img: "https://i.ibb.co/K7k8Pq5/Women-Style.webp",
       title: "Women Style",
       cat:"WomenStyle"
     },

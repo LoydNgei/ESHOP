@@ -31,6 +31,7 @@ const Container = styled.div`
     justify-content: center;
     background-color: #f5fbfd;
     position: relative;
+    margin: 10px;
 
     &:hover ${Info}{
       opacity: 1;
@@ -57,7 +58,6 @@ const Image = styled.img`
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-
 `;
 
 
@@ -71,7 +71,6 @@ const Icon = styled.div`
   justify-content: center;
   margin: 10px;
   transition: all 0.5s ease;
-
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);

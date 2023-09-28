@@ -3,9 +3,16 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { removeItem } from '../redux/cartRedux';
 
 import {mobile} from '../responsive'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link as RouterLink } from "react-router-dom"
+
+
+// import {PayPalButtons} from "@paypal/react-paypal-js";
+
 
 const Container = styled.div`
     background-color: #f5fbfd;
@@ -38,8 +45,7 @@ const TopButton = styled.button`
 
 
 const TopTexts = styled.div`
-
-${mobile({ display: "none" })}
+    ${mobile({ display: "none" })}
 
 `
 
@@ -75,6 +81,8 @@ const ProductDetail = styled.div`
 const Image = styled.img`
     width: 50%;
     border-radius: 10px;
+    margin-bottom: 50px;
+
 `
 
 const Details = styled.div`
@@ -108,6 +116,7 @@ const PriceDetail = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 `
 
 const ProductAmountContainer = styled.div`
@@ -130,6 +139,12 @@ const ProductPrice = styled.div`
 
 `
 
+
+const Hr = styled.hr`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`;
 
 const Summary = styled.div`
     flex: 1;
@@ -168,29 +183,50 @@ const Button = styled.button`
     cursor: pointer;
 `
 
+const Remove = styled.div`
+    display: flex;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    margin-right: 20px;
+`
+
 
 const Cart = () => {
     const cart = useSelector((state)=>state.cart);
 
-    console.log(cart.products)
+    const dispatch = useDispatch();
+
+    const handleRemoveItem = (index) => {
+        dispatch(removeItem(index));
+    }
+
+    // console.log(cart.products)
     return (
         <Container>
             <Navbar></Navbar>
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
+                    <RouterLink to="/">
+                        <TopButton >CONTINUE SHOPPING</TopButton>                    
+                    </RouterLink>
                     <TopTexts>
                         <TopText>Shopping Bag(2)</TopText>
                         <TopText>Your Wishlist(0)</TopText>
                     </TopTexts>
                     <TopButton>CHECKOUT NOW</TopButton>
                 </Top>
+
+
                 <Bottom>
                     <Info>
 
-                    {cart.products && cart.products.map((product) => (
-                        <Product>
+                    {cart.products && cart.products.map((product, index) => (
+                        <Product key={index}>
                             <ProductDetail>
                                 <Image src={product.img}></Image>
                                 <Details>
@@ -209,15 +245,24 @@ const Cart = () => {
                                 </ProductAmountContainer>
                                 <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
+
+                            {/* REMOVE ITEMS FROM THE CART LIST  */}
+
+                            <Remove onClick={() => handleRemoveItem(index)}>
+                                <DeleteIcon></DeleteIcon>
+                            </Remove>
+                            
                         </Product>
                     ))}
+
+                    <Hr/>
 
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total.toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
 
                         <SummaryItem>
@@ -232,11 +277,12 @@ const Cart = () => {
 
                         <SummaryItem type = "total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total.toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
 
-                        <Button>CHECKOUT NOW</Button>
 
+
+                        <Button>CHECKOUT</Button>
                     </Summary>
                 </Bottom>
             </Wrapper>
@@ -246,3 +292,28 @@ const Cart = () => {
 }
 
 export default Cart
+
+
+                        {/* <PayPalButtons
+                            createOrder={(data, actions) => {
+                                // Define your createOrder function here
+                                return actions.order.create({
+                                // Include order details (e.g., items, total) here
+                                });
+                            }}
+                            onApprove={(data, actions) => {
+                                // Define your onApprove function here
+                                return actions.order.capture().then((details) => {
+                                // Handle successful payment confirmation here
+                                console.log("Payment successful", details);
+                                // You may want to update your database and display a confirmation to the user
+                                });
+                            }}
+                            onError={(err) => {
+                                // Handle errors that occur during the payment process
+                                console.error("Payment error", err);
+                            }}
+                            >
+                            CHECKOUT NOW
+                        </PayPalButtons> */}
+      

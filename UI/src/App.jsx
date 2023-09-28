@@ -1,15 +1,14 @@
-
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import ProductList from './pages/ProductList';
 import IndividualProduct from './pages/IndividualProduct';
-
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 const App = () => {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
       <Routes>
