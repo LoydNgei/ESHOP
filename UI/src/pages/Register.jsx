@@ -1,10 +1,13 @@
 import styled from "styled-components"
 import {mobile} from '../responsive'
 import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
-// import {register} from '../redux/apiCalls'
 import axios from "axios"
-import { publicRequest } from "../requestMethods";
+
+
+// import {register} from '../redux/apiCalls'
+// import { publicRequest } from "../requestMethods";
 
 
 const Container = styled.div`
@@ -64,56 +67,50 @@ const Button = styled.button`
 
 const Register = () => {
 
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [confirmPassword, setConfirmPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState(false)
 
     const handleRegister = async (e) => {
         e.preventDefault();
-
-        // if (password !== confirmPassword) {
-        //     setPassword('')
-        //     // setConfirmPassword('')
-        //     setError("Passwords do not match")
-        //     return;
-        // }
+        if (password !== confirmPassword) {
+            setPassword('')
+            setConfirmPassword('')
+            setError("Passwords do not match")
+            return;
+        }
         const user = {
             username: username,
             email: email,
             password: password,
         };
 
+        // CONSUME REGISTER BACKEND API USING AXIOS
+
         try {
-            const response = await axios({
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                url: "http://localhost:4000/api/auth/register",
-                // body: JSON.stringify(user),
-            });
-
-
-            // console.log(response.data);
-
-
-            if (response.status === 200) {
-                return response.data;
-            // } else {
-            //     const data = await response.json();
-            //     setError(data.error || "Registration failed");
-
-            //     console.log(response.data);
-            // }
+            const response = await axios.post("http://localhost:4000/api/auth/register", user);
+            console.log(response.data);
+            if (response.status === 201) {
+                navigate("/login");
+              } else {
+                const data = response.data || {};
+                setError(data.error || "Registration failed");
+              }
+            } catch (error) {
+              console.error(error);
+          
+              // Check if error.response exists before accessing error.response.data
+              if (error.response && error.response.data) {
+                setError(error.response.data.error || "Registration failed");
+              } else {
+                setError("Registration failed");
+              }
             }
-
-        } catch (error) {
-            console.error(error.response.data);   // NOTE - use "error.response.data` (not "error")
-            setError("Registration failed");
-        }
-    };
+          };
 
     return (
         <Container>
@@ -138,19 +135,19 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* <Input
+          <Input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          /> */}
+          />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Link to="/login">
-            <Button onClick={handleRegister}>CREATE</Button>
-        </Link>
+
+          <Button onClick={handleRegister}>CREATE</Button>
+
           {error && <div>
             {error.message}</div>}
          <a>Already have an Account? <Link to="/login" style={{color: "yellow", margin: "10px", textDecoration: "None"}}>LOGIN</Link></a>

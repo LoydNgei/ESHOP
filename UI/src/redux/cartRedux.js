@@ -18,8 +18,10 @@ const cartSlice = createSlice({
       state.quantity -= removedItem.quantity;
       state.total -= removedItem.price * removedItem.quantity;
 
+// TO BE CHANGED
 
-      if (state.quantity < 0) {
+
+      if (state.quantity < 1) {
         state.quantity = 0;
       }
     

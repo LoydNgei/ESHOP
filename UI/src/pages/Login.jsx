@@ -6,15 +6,10 @@ import { login } from "../redux/apiCalls"
 import { useSelector } from "react-redux"
 import { Link as RouterLink } from "react-router-dom"
 
-
-
-
-
-
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://i.ibb.co/Bc6QbCH/Stylish-Footwear.jpg");
+    // background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://i.ibb.co/Bc6QbCH/Stylish-Footwear.jpg");
     background-size: 50% 100%;
     display: flex;
     align-items: center;
@@ -22,7 +17,7 @@ const Container = styled.div`
 
 `
 const Wrapper = styled.div`
-    width: 40%;    
+    width: 50%;    
     padding: 20px;
     background-color: white;
     ${mobile({ width: "75%" })}
@@ -55,9 +50,10 @@ const Button = styled.button`
     width: 20%;
     height: 30px;
     border: none;
-    padding: 15px 20px;
+    padding: 8px;
     display: flex;
     align-items: center;
+    overflow: hidden;
     border-radius: 10px;
     background-color: teal;
     &:hover {
@@ -74,7 +70,6 @@ const Button = styled.button`
 const Link = styled.a`
     margin: 10px 0px;
     font-size: 16px;
-    // text-decoration: underline;
     cursor: pointer;
 `
 
@@ -83,25 +78,25 @@ const Error = styled.span`
 `
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const { isFetching, error }  = useSelector((state) => state.user);
 
     const handleClick = (e) => {
         e.preventDefault();
-        login(dispatch, {username, password});
+        login(dispatch, {email, password});
     }
 
     return (
         <Container>
             <Wrapper>
-                <Title>SIGN UP</Title>
+                <Title>Welcome Back!</Title>
                 <Form>
-                    <Input type="text" placeholder="User Name" onChange={(e) => setUsername(e.target.value)}></Input>
+                    <Input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}></Input>
                     <Input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></Input>
                     <Button onClick={handleClick} disabled = {isFetching}>LOGIN</Button>
-                    <Error>{error && !isFetching && "Something went wrong"}</Error>
+                    {/* <Error>{error && !isFetching && "Something went wrong"}</Error> */}
                     <Link>Forgot password?</Link>
                     <RouterLink to="/register" style={{textDecoration: "None", color: "yellow"}}>CREATE ACCOUNT</RouterLink>
                 </Form>
@@ -109,5 +104,6 @@ const Login = () => {
         </Container>
     )
 }
+
 
 export default Login

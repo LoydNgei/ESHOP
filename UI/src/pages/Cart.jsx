@@ -214,10 +214,10 @@ const Cart = () => {
                     <RouterLink to="/">
                         <TopButton >CONTINUE SHOPPING</TopButton>                    
                     </RouterLink>
-                    <TopTexts>
+                    {/* <TopTexts>
                         <TopText>Shopping Bag(2)</TopText>
                         <TopText>Your Wishlist(0)</TopText>
-                    </TopTexts>
+                    </TopTexts> */}
                     <TopButton>CHECKOUT NOW</TopButton>
                 </Top>
 
