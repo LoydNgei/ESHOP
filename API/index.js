@@ -15,7 +15,7 @@ mongoose.set('strictQuery', false);
 
 mongoose
   .connect(process.env.MONGODB_URL)
-  .then(() => console.log("DB Connection Successfull!"))
+  .then(() => console.log("DB Connection Successfull..."))
   .catch((err) => {
     console.log(err);
   });
@@ -29,6 +29,6 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 // app.use("/api/checkout", PaypalRoute);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Backend server is running on port 5000...");
+app.listen(process.env.PORT, () => {
+  console.log("Backend server is running on port 4000...");
 });

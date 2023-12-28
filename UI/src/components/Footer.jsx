@@ -105,17 +105,17 @@ const Footer = () => {
     <Container>
 
         <Left>
-            <Logo>ESHOP</Logo>
+            <Logo>TUSHOP</Logo>
             <Desc>JOIN US ON</Desc>
             <SocialContainer>
                 <SocialIcon>
-                    <FacebookIcon></FacebookIcon>
+                    <FacebookIcon to=""></FacebookIcon>
                 </SocialIcon>
                 <SocialIcon>
-                    <InstagramIcon></InstagramIcon>
+                    <InstagramIcon to=""></InstagramIcon>
                 </SocialIcon>
                 <SocialIcon>
-                    <TwitterIcon></TwitterIcon>
+                    <TwitterIcon to=""></TwitterIcon>
                 </SocialIcon>
             </SocialContainer>
         </Left>
@@ -153,7 +153,7 @@ const Footer = () => {
 
             <ContactItem>
                 <MailOutlineIcon style={{marginRight: '10px'}}></MailOutlineIcon>
-                Eshop@gmail.com
+                Tushop@gmail.com
             </ContactItem>
 
             <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"></Payment>

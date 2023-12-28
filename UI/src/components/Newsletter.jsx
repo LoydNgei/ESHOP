@@ -60,7 +60,7 @@ const Button = styled.button`
 const Newsletter = () => {
   return (
     <Container>
-        <Title>NEW TO ESHOP?</Title>
+        <Title>NEW TO TUSHOP?</Title>
         <Desc>Subscribe to our newsletter to get updates on our latest offers!</Desc>
         <InputContainer>
             <Input placeholder = "Your email"></Input>

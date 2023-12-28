@@ -13,7 +13,7 @@ import axios from "axios"
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("https://i.ibb.co/M5FKtZX/Laptop.jpg");
+    // background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("https://i.ibb.co/M5FKtZX/Laptop.jpg");
     background-size: 50% 100%;
     display: flex;
     align-items: center;

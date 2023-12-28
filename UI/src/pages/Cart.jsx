@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { removeItem } from '../redux/cartRedux';
-
+import {Link} from 'react-router-dom'
 import {mobile} from '../responsive'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from "react-router-dom"
@@ -279,10 +279,8 @@ const Cart = () => {
                             <SummaryItemText>Total</SummaryItemText>
                             <SummaryItemPrice>$ {cart.total.toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
-
-
-
-                        <Button>CHECKOUT</Button>
+                        
+                        <Button><Link to="/login" style={{ margin: "10px", textDecoration: "None"}}>CHECKOUT</Link></Button>
                     </Summary>
                 </Bottom>
             </Wrapper>
