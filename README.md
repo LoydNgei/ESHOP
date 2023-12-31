@@ -1,17 +1,45 @@
+# ESHOP
+
+An Ecommerce shop developed using React(Styled components), NodeJS(ExpressJS Framework) and MongoDB as the Database
+
+## What has been handled?
+
+    1. Good User Interface(minimalist)
+    2. Secure User Authetication
+    3. User and cart state management
+    4. Cloud product images storage
+    5. Admin and User verification(JWT)
+    6. Payment system (In Progress...)
+
 # API
 
-### models
+This is the where my Backend logic is and the APIs. Tested using Postman
 
-### routes
 
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/LoydNgei/ESHOP
+
+cd ESHOP
+
+cd API
+```
+2. Install the dependencies
+
+```bash
+npm install
+
+```
+
+3. Start the API
+
+```bash
+npm start
+```
 
 
 # UI
 
-## src
-
-### Components
-
-### Pages
-
-### Redux

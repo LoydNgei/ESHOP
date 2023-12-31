@@ -34,11 +34,18 @@ const Title = styled.h1`
 `
 const Button = styled.button`
   border: none;
-  padding: 10px;
+  margin: 10px;
+  padding: 12px;
   background-color: white;
-  color: aqua;
+  color: green;
   cursor: pointer;
   font-weight: 400;
+  border-radius: 10px;
+  font-weight: bold;
+  &:hover {
+    background-color: yellow;
+}
+
 `
 
 const CategoryItem = ({ item }) => {
