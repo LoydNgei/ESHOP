@@ -1,10 +1,10 @@
 # ESHOP
 
-An Ecommerce shop developed using React(Styled components), NodeJS(ExpressJS Framework) and MongoDB as the Database
+An Ecommerce shop developed using React (Styled components), NodeJS (ExpressJS Framework) and MongoDB as the Database
 
 ## What has been handled?
 
-    1. Good User Interface(minimalist)
+    1. Good User Interface (minimalist)
     2. Secure User Authetication
     3. User and cart state management
     4. Cloud product images storage
@@ -13,7 +13,7 @@ An Ecommerce shop developed using React(Styled components), NodeJS(ExpressJS Fra
 
 # API
 
-This is the where my Backend logic is and the APIs. Tested using Postman
+This is the where my Backend logic of APIs and storage of products and User information is. Tested using Postman
 
 
 ## Getting Started
@@ -44,7 +44,7 @@ npm start
 
 # UI
 
-This is where the React components are. This part make up the User Interface
+This is where the React components are. This part makes up the User Interface
 
 ## Getting Started
 
