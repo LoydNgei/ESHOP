@@ -27,6 +27,7 @@ cd ESHOP
 
 cd API
 ```
+
 2. Install the dependencies
 
 ```bash
@@ -42,4 +43,31 @@ npm start
 
 
 # UI
+
+This is where the React components are. This part make up the User Interface
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/LoydNgei/ESHOP
+
+cd ESHOP
+
+cd UI
+```
+
+2. Install the dependencies
+
+```bash
+npm install
+
+```
+
+3. Start the API
+
+```bash
+npm start
+```
 
