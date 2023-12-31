@@ -1,10 +1,13 @@
 import styled from "styled-components"
-import {mobile} from '../responsive'
+import { mobile } from '../responsive'
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { login } from "../redux/apiCalls"
 import { useSelector } from "react-redux"
 import { Link as RouterLink } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
+import { loginSuccess } from "../redux/userRedux"
+import { resetCart } from "../redux/cartRedux"
 
 const Container = styled.div`
     width: 100vw;
@@ -14,13 +17,16 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    // background-color: blue;
 
 `
 const Wrapper = styled.div`
     width: 50%;    
     padding: 20px;
-    background-color: white;
+    background-color: #FFA500;
     ${mobile({ width: "75%" })}
+    border-radius: 10px;
 `
 
 const Title = styled.h1`
@@ -40,7 +46,6 @@ const Input = styled.input`
     margin: 10px 0px;
     padding: 13px;
     font-size: 16px;
-    color: white;
     border: 1px solid gray;
     border-radius: 10px;
 `
@@ -57,7 +62,7 @@ const Button = styled.button`
     border-radius: 10px;
     background-color: teal;
     &:hover {
-        background-color: white;
+        background-color: green;
     }
     color: white;
     cursor: pointer;
@@ -70,7 +75,6 @@ const Button = styled.button`
 const Link = styled.a`
     margin: 10px 0px;
     font-size: 16px;
-    cursor: pointer;
 `
 
 const Error = styled.span`
@@ -82,10 +86,24 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const { isFetching, error }  = useSelector((state) => state.user);
+    const navigate = useNavigate();
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
-        login(dispatch, {email, password});
+        try {
+            const user = await login(dispatch, {email, password});
+            console.log('User Data', user)
+            dispatch(loginSuccess(user));
+            dispatch(resetCart());
+            if (response.status === 401) {
+                // Handle incorrect credentials error
+                console.log("Incorrect credentials");
+                // You can dispatch an action or update the state to indicate incorrect credentials
+              }
+            navigate("/");
+        } catch(error) {
+            console.log('Login failed', error)
+        }
     }
 
     return (
@@ -98,7 +116,7 @@ const Login = () => {
                     <Button onClick={handleClick} disabled = {isFetching}>LOGIN</Button>
                     {/* <Error>{error && !isFetching && "Something went wrong"}</Error> */}
                     <Link>Forgot password?</Link>
-                    <RouterLink to="/register" style={{textDecoration: "None", color: "yellow"}}>CREATE ACCOUNT</RouterLink>
+                    <RouterLink to="/register" style={{textDecoration: "None", color: "green"}}>CREATE ACCOUNT</RouterLink>
                 </Form>
             </Wrapper>
         </Container>

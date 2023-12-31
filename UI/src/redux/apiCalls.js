@@ -11,6 +11,11 @@ export const login = async (dispatch, user) => {
         if (err.response) {
           // The error is from the server response
           console.error("Server error:", err.response.data);
+          if (err.response.status === 401) {
+            // Handle incorrect credentials error
+            console.error("Incorrect credentials");
+            // You can dispatch an action or update the state to indicate incorrect credentials
+          }
         } else {
           // An unexpected error occurred
           console.error("Unexpected error:", err.message);

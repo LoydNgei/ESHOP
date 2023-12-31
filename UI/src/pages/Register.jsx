@@ -23,7 +23,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
     width: 40%;    
     padding: 20px;
-    background-color: white;
+    background-color: #FFA500;
     ${mobile({ width: "75%" })}
 
 `
@@ -44,7 +44,6 @@ const Input = styled.input`
     width: 70%;
     margin: 20px 10px 0px 0px;
     padding: 13px;
-    color: white;
     font-size: 16px;
     border: 1px solid gray;
     border-radius: 10px;
@@ -63,6 +62,9 @@ const Button = styled.button`
     background-color: teal;
     color: white;
     cursor: pointer;
+    &:hover {
+      background-color: green;
+  }
 `
 
 const Register = () => {
@@ -150,7 +152,7 @@ const Register = () => {
 
           {error && <div>
             {error.message}</div>}
-         <a>Already have an Account? <Link to="/login" style={{color: "yellow", margin: "10px", textDecoration: "None"}}>LOGIN</Link></a>
+          <>Already have an Account? <Link to="/login" style={{color: "green", margin: "10px", textDecoration: "None"}}>LOGIN</Link></>
         </Form>
             </Wrapper>
         </Container>

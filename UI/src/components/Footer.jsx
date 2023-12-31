@@ -109,13 +109,13 @@ const Footer = () => {
             <Desc>JOIN US ON</Desc>
             <SocialContainer>
                 <SocialIcon>
-                    <FacebookIcon to=""></FacebookIcon>
+                    <FacebookIcon></FacebookIcon>
                 </SocialIcon>
                 <SocialIcon>
-                    <InstagramIcon to=""></InstagramIcon>
+                    <InstagramIcon></InstagramIcon>
                 </SocialIcon>
                 <SocialIcon>
-                    <TwitterIcon to=""></TwitterIcon>
+                    <TwitterIcon></TwitterIcon>
                 </SocialIcon>
             </SocialContainer>
         </Left>
