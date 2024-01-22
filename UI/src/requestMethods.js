@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:4000/api/";
+const BASE_URL = "https://eshopcentre.vercel.app/api";
 
 const TOKEN = ""; //SHALL COPY ACCESS TOKEN FROM LOGIN
 
@@ -10,5 +10,5 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
     baseURL: BASE_URL,
-    header:{token:`Bearer ${TOKEN}`}
+    headers: {token:`Bearer ${TOKEN}`}
 })
