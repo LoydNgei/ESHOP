@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+
+axios.defaults.withCredentials = true;
+
 const BASE_URL = "https://eshopcentre.vercel.app/api";
 
 const TOKEN = ""; //SHALL COPY ACCESS TOKEN FROM LOGIN
