@@ -20,9 +20,13 @@ mongoose
     console.log(err);
   });
 
-  app.use(cors({
-    origin: "https://659419e8b4ecbc14d43d776f--dainty-pasca-6db288.netlify.app/"
-  }));
+  app.use(cors(
+    {
+      origin: ["https://deploy-mern-1whq.vercel.app"],
+      methods: ["POST", "GET"],
+      credentials: true
+    }
+  ));
   
 app.use(express.json());
 app.use("/api/auth", authRoute);
