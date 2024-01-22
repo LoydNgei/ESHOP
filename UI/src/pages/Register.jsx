@@ -93,12 +93,14 @@ const Register = () => {
 
         // CONSUME REGISTER BACKEND API USING AXIOS
 
+        axios.defaults.withCredentials = true;
+        
         try {
             const apiBaseUrl = 'https://eshopcentre.vercel.app/api';
             const response = await axios.post(`${apiBaseUrl}/auth/register`, user);
 
             console.log(response.data);
-            
+
             if (response.status === 201) {
                 navigate("/login");
               } else {
