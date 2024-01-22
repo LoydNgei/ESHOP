@@ -16,16 +16,23 @@ const Products = ({ cat, filters, sort }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    
+    const apiBaseUrl = 'https://eshopcentre.vercel.app/api';
+
+
     const getProducts = async () => {
       try {
-        const res = await axios.get(
-          cat
-            ? `http://localhost:4000/api/products?category=${cat}`
-            : "http://localhost:4000/api/products"
-        )
+        const url = cat
+          ? `${apiBaseUrl}/products?category=${cat}`
+          : `${apiBaseUrl}/products`;
+
+        const res = await axios.get(url);
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {
+        console.error('Error fetching products:', err);
+      }
     };
+    
     getProducts();
   }, [cat]);
 
