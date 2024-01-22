@@ -39,15 +39,26 @@ const Products = ({ cat, filters, sort }) => {
   }, [cat]);
 
   // Filtering items according to properties
+  // useEffect(() => {
+  //   cat && setFilteredProducts(
+  //     products.filter(item => Object.entries(filters).every(([key, value]) => 
+  //       item[key].includes(value)
+  //       )
+  //     )
+  //   );
+  // }, [products, cat, filters])
 
-  useEffect(() => {
-    cat && setFilteredProducts(
-      products.filter(item => Object.entries(filters).every(([key, value]) => 
-        item[key].includes(value)
-        )
-      )
-    );
-  }, [products, cat, filters])
+  // Filtering items according to properties
+useEffect(() => {
+  if (cat) {
+    setFilteredProducts(products.filter(item => item.categories.includes(cat)));
+  } else {
+    setFilteredProducts([...products]);
+  }
+}, [products, cat]);
+
+  
+
 
 
 
