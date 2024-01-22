@@ -94,15 +94,18 @@ const Register = () => {
         // CONSUME REGISTER BACKEND API USING AXIOS
 
         try {
-            const response = await axios.post("http://localhost:4000/api/auth/register", user);
+            const apiBaseUrl = 'https://eshopcentre.vercel.app/api';
+            const response = await axios.post(`${apiBaseUrl}/auth/register`, user);
+
             console.log(response.data);
+            
             if (response.status === 201) {
                 navigate("/login");
               } else {
                 const data = response.data || {};
                 setError(data.error || "Registration failed");
               }
-            } catch (error) {
+        } catch (error) {
               console.error(error);
           
               // Check if error.response exists before accessing error.response.data
