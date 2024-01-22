@@ -11,6 +11,8 @@ const Container = styled.div`
     justify-content: space-between;
 `
 
+axios.defaults.withCredentials = true;
+
 const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -32,7 +34,7 @@ const Products = ({ cat, filters, sort }) => {
         console.error('Error fetching products:', err);
       }
     };
-    
+
     getProducts();
   }, [cat]);
 
