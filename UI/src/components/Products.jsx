@@ -19,7 +19,7 @@ const Products = ({ cat, filters, sort }) => {
 
   useEffect(() => {
     
-    const apiBaseUrl = 'http://eshopapi.vercel.app/api';
+    const apiBaseUrl = 'https://eshopapi.vercel.app/api';
 
 
     const getProducts = async () => {
