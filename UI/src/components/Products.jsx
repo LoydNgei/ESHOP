@@ -19,7 +19,7 @@ const Products = ({ cat, filters, sort }) => {
 
   useEffect(() => {
     
-    const apiBaseUrl = 'https://eshopcentre.vercel.app/api';
+    const apiBaseUrl = 'http://eshopapi.vercel.app/api';
 
 
     const getProducts = async () => {
@@ -27,7 +27,7 @@ const Products = ({ cat, filters, sort }) => {
         const url = cat
           ? `${apiBaseUrl}/products?category=${cat}`
           : `${apiBaseUrl}/products`;
-          
+
         const res = await axios.get(url);
         setProducts(res.data);
       } catch (err) {
