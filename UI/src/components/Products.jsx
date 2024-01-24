@@ -27,13 +27,27 @@ const Products = ({ cat, filters, sort }) => {
         const url = cat
           ? `${apiBaseUrl}/products?category=${cat}`
           : `${apiBaseUrl}/products`;
-
+          
         const res = await axios.get(url);
         setProducts(res.data);
       } catch (err) {
         console.error('Error fetching products:', err);
+
+        if (err.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error('Response data:', err.response.data);
+          console.error('Response status:', err.response.status);
+          console.error('Response headers:', err.response.headers);
+        } else if (err.request) {
+          // The request was made but no response was received
+          console.error('No response received:', err.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Error setting up the request:', err.message);
+        }
       }
-    };
+      };
 
     getProducts();
   }, [cat]);
