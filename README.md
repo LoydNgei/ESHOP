@@ -4,12 +4,12 @@ An Ecommerce shop developed using React (Styled components), NodeJS (ExpressJS F
 
 ## What has been handled?
 
-    1. Good User Interface (minimalist)
-    2. Secure User Authetication
-    3. User and cart state management
-    4. Cloud product images storage
-    5. Admin and User verification(JWT)
-    6. Payment system (In Progress...)
+1. Good User Interface (minimalist)
+2. Secure User Authetication
+3. User and cart state management
+4. Cloud product images storage
+5. Admin and User verification(JWT)
+6. Payment system (In Progress...)
 
 # API
 
